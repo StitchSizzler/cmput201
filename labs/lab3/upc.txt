@@ -1,0 +1,6 @@
+Example of instance with error: 0 00000 00000 
+
+This instance will generate a check digit of 10,
+but the bar code assumes the check digit is a
+single digit. Bar codes have 12 numbers, but this instance
+would require a bar code of 13 numbers. 

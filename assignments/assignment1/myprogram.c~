@@ -1,0 +1,90 @@
+/* Assignment1
+   This program can be run as either -i or -r
+   -r will generate random job times
+   -i allows the user to input times manually  */
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main(int argc, char*argv[]){
+  
+  int num_machines, num_jobs;
+
+  // check if run correctly
+  if(argc!=2){
+    printf("%s -i | -r \n", argv[0]);
+    return -10;
+  }
+  if(strcmp(argv[1], "-i") && strcmp(argv[1], "-r")){
+    printf("%s -i | -r \n", argv[0]);
+    return -10;
+  }
+
+  // write instance
+  if(!strcmp(argv[1], "-i")){
+    printf("Enter the number of machines in stage 1: ");
+    scanf("%d", &num_machines);
+    printf("Enter the number of jobs: ");
+    scanf("%d", &num_jobs);
+
+    // array to store job times
+    int pro_times[num_jobs][3];
+    printf("Enter in each line the processing times for a job: ");
+    for(int job_count=0; job_count<num_jobs; job_count++){
+      for(int time_count=0; time_count<3; time_count++){
+	scanf("%d", &pro_times[job_count][time_count]);
+      }//for, scan time_count
+    }//for, scan job_count
+
+    // print input values
+    printf("\n#number of machines in stage 1 \n%d\n", num_machines);
+    printf("#number of jobs \n%d\n", num_jobs);
+    printf("#job processing times \n");
+    for(int job_count=0; job_count<num_jobs; job_count++){
+      for(int time_count=0; time_count<3; time_count++){
+	printf("%d ", pro_times[job_count][time_count]);
+      }//for, print time_count
+      printf("\n");
+    }//for, print job_count
+    printf("#end of instance \n");
+      
+  }//if, write instance
+
+
+
+  // read instance
+  if(!strcmp(argv[1], "-r")){
+    int time_low, time_high, num_instances;
+    time_t t;
+    srand((unsigned) time(&t));
+    printf("Generating random instances ... \n");
+    printf("Enter the number of machines in stage 1: ");
+    scanf("%d", &num_machines);
+    printf("Enter the number of jobs: ");
+    scanf("%d", &num_jobs);
+    printf("Enter the processing time interval [t_1, t_2]: ");
+    scanf("%d %d", &time_low, &time_high);
+    printf("Enter the number of instances to be generated: ");
+    scanf("%d", &num_instances);
+
+    for(int instance_num=1; instance_num<=num_instances; instance_num++){
+      printf("\n#instance%d_%d_%d.txt\n", num_machines, num_jobs, instance_num);
+      printf("#number of machines in stage 1 \n%d\n", num_machines);
+      printf("#number of jobs \n%d\n", num_jobs);
+      printf("#job processing times\n");
+      //print random times
+      for(int job=0; jobs<num_jobs; job++){
+	for(int time_count=0; time_count<3; time_count++){
+	  int rand_time = rand()% (time_high+1-time_low)+time_low;
+	  printf("%d ", rand_time);
+	}//for, time_count
+	printf("\n");
+      }//for, job counter
+      printf("#end of instance\n\n");
+    }//for, instance counter
+
+  }//if, read an instance
+  return 0;
+} //main

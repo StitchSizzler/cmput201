@@ -1,0 +1,8 @@
+run: myprogram.o lpt.o
+	gcc -o myprogram myprogram.o lpt.o
+
+myprogram.o: lpt.h
+	gcc -c myprogram.o
+
+lpt.o: lpt.c lpt.h
+	gcc -c lpt.c

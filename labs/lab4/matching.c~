@@ -1,0 +1,35 @@
+/* This program finds a maximal matching
+   for a given input */
+
+#include <stdio.h>
+
+int main(){
+
+  int size;
+  printf("Enter number of vertexs: ");
+  scanf("%d", &size);
+
+  //get matrix values
+  int matrix[size*size][2];
+  int input;
+  int count = 0;
+  printf("Enter your matrix: ");
+  for(int row=0; row<size; row++){
+    for(int col=0; col<size; col++){
+      scanf("%d", &input);
+      if(input==1){
+	matrix[count][0] = row;
+	matrix[count][1] = col;
+      }
+      else if(input==0){
+	matrix[count][0] = 0;
+	matrix[count][1] = 0;
+      }
+      else{
+	printf("Error in reading\n");
+	return -10;
+      }
+    }
+  }
+
+}//main

@@ -1,0 +1,17 @@
+/* Reduces a fraction n/m to lowest term */
+
+#include <stdio.h>
+
+int main(){
+
+  int n, m, rem;
+  printf("Enter a fraction: ");
+  scanf("%d/%d", &n, &m);
+
+  while(n!=0){
+      rem = m % n;
+      m = n;
+      n = rem;
+    }//while
+
+}//main
